@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết model</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="container mt-5 bg-success text-white">
+
+    <div class="jumbotron bg-info text-white">
+        <h1 class="display-4 text-center">Thông tin thống kê về model</h1>
+        <p class="lead">Tổng số mẫu đang có trong cơ sở dữ liệu: <span class="font-weight-bold text-warning">{{ thongke.tongSoLuong }}</span></p>
+        <p class="lead">Tổng số mẫu chưa được đào tạo: <span class="font-weight-bold text-warning">{{ thongke.tongSoChuaDaoTao }}</span></p>
+    </div>
+
+    <div class="card mt-5">
+        <div class="card-body">
+            <h5 class="card-title text-primary text-center">Thông tin model</h5>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Id:</div>
+                <div class="font-weight-bold text-dark">{{ model.id }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Đường dẫn model:</div>
+                <div class="font-weight-bold text-dark">{{ model.duongDanModel }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Đường dẫn vector:</div>
+                <div class="font-weight-bold text-dark">{{ model.duongDanVector }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Ngày huấn luyện:</div>
+                <div class="font-weight-bold text-dark">{{ model.ngayHuanLuyen }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Accuracy:</div>
+                <div class="font-weight-bold text-dark">{{ model.accuracy }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Precision:</div>
+                <div class="font-weight-bold text-dark">{{ model.precision }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">Recall:</div>
+                <div class="font-weight-bold text-dark">{{ model.recall }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">F1 score:</div>
+                <div class="font-weight-bold text-dark">{{ model.f1_score }}</div>
+            </div>
+            <div class="card-text d-flex justify-content-between">
+                <div class="font-weight-bold text-warning">State:</div>
+                <div class="font-weight-bold text-dark">{{ model.state }}</div>
+                <a href="/su-dung?id={{ model.id }}">Sử dụng</a>
+                <a href="/ngung-su-dung?id={{ model.id }}">Ngưng sử dụng</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column">
+        <div class="d-flex justify-content-center"><a class="btn-danger" href="/chon-mau?id={{ model.id }}">Đào tạo lại</a></div>
+        <div class="d-flex justify-content-center"><a class="btn-secondary" href="/quan-ly-model">Quay về trang chủ</a></div>
+    </div>
+</body>
+</html>

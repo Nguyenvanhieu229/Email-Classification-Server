@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chọn Mẫu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="container mt-5 bg-success">
+    <form id="chonMau" method="post" action="/dao-tao-lai">
+        <input type="text" name="id_model" value="{{ model.id }}" style="display : none;">
+        <div class = "d-flex justify-content-around">
+            <button type="button" class="btn btn-primary" id="selectAll">Chọn tất cả</button>
+            <button type="submit" class="btn btn-danger">Đào tạo lại</button>
+        </div>
+        <div style="max-height: 600px; overflow-y: auto;">
+            <table class="table" >
+            <thead class="bg-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nội dung gốc</th>
+                    <th>Ngày thêm</th>
+                    <th>Nhãn</th>
+                    <th>Chọn tất cả</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                {% for mau in maus %}
+                    <tr>
+                        <td>{{ mau.id }}</td>
+                        <td>{{ mau.noiDungGoc[0:20] + '...' }}</td>
+                        <td>{{ mau.ngayThem }}</td>
+                        <td>{{ mau.nhan.ten }}</td>
+                        <td><input type="checkbox" class="select-checkbox" name="id_maus" value="{{ mau.id }}"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+    </form>
+
+    <script>
+        document.getElementById('selectAll').addEventListener('click', function() {
+            var checkboxes = document.getElementsByClassName('select-checkbox');
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
